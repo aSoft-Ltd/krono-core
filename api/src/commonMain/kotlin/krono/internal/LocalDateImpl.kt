@@ -114,7 +114,7 @@ internal data class LocalDateImpl(
             monthX = 12
             yearX -= 1
         }
-        val numberOfDaysInMonth = Month.entries[monthX - 1].numberOfDays(yearX)
+        val numberOfDaysInMonth = Month.values()[monthX - 1].numberOfDays(yearX)
         return LocalDateImpl(yearX, monthX, numberOfDaysInMonth).minusDays(days - dayOfMonth)
     }
 

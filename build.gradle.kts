@@ -22,7 +22,7 @@ allprojects {
 }
 
 tasks.dokkaHtmlMultiModule {
-    moduleName.set("Krono")
+    moduleName.set("Krono Core")
     outputDirectory.set(rootDir.resolve("docs"))
     moduleVersion.set(v)
     includes.from("ReadMe.md")
@@ -45,11 +45,11 @@ subprojects {
             name.set(p.name)
             description.set(p.description)
             inceptionYear.set("2019")
-            url.set("https://github.com/aSoft-Ltd/krono")
+            url.set("https://github.com/aSoft-Ltd/krono-core")
             licenses {
                 license {
                     name.set("MIT License")
-                    url.set("https://github.com/aSoft-Ltd/krono/blob/master/LICENSE")
+                    url.set("https://github.com/aSoft-Ltd/krono-core/blob/master/LICENSE")
                 }
             }
             developers {
@@ -61,8 +61,8 @@ subprojects {
             }
             scm {
                 url.set("https://github.com/aSoft-Ltd/krono/")
-                connection.set("scm:git:git://github.com/aSoft-Ltd/krono.git")
-                developerConnection.set("scm:git:ssh://git@github.com/aSoft-Ltd/krono.git")
+                connection.set("scm:git:git://github.com/aSoft-Ltd/krono-core.git")
+                developerConnection.set("scm:git:ssh://git@github.com/aSoft-Ltd/krono-core.git")
             }
         }
     }

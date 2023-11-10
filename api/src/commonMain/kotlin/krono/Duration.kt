@@ -31,8 +31,9 @@ data class Duration(val value: Double, val unit: DurationUnit) : Comparable<Dura
     }
 
     override fun compareTo(other: Duration): Int {
+        if (unit == other.unit) return value.compareTo(other.value)
         val converted = convert(other.value, from = other.unit, into = unit)
-        return converted.compareTo(other.value)
+        return value.compareTo(converted)
     }
 
     override fun equals(other: Any?): Boolean {

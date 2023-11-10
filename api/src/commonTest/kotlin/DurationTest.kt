@@ -69,4 +69,9 @@ class DurationTest {
         expect(59.seconds.toRelativeString()).toBe("59 seconds")
         expect(60.seconds.toRelativeString()).toBe("a minute")
     }
+
+    @Test
+    fun duration_comparison_test() {
+        expect(18.minutes < 1.days).toBe(true, "18 mins are not less thatn 1 day")
+    }
 }

@@ -2,7 +2,7 @@
 
 package krono
 
-import kotlin.js.JsExport
+import kotlinx.JsExport
 
 fun Month.numberOfDays(year: Int): Int = when (this) {
     Month.JANUARY -> 31

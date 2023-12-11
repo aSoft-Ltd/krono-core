@@ -5,7 +5,7 @@ package krono
 
 import krono.internal.AbstractZonedDateTime
 import krono.utils.DaysOfMonth
-import kotlin.js.JsExport
+import kotlinx.JsExport
 import kotlin.js.JsName
 
 data class DateTimePresenter(

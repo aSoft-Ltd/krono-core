@@ -5,7 +5,7 @@ package krono
 
 import kotlinx.datetime.toInstant
 import krono.internal.InstantImpl
-import kotlin.js.JsExport
+import kotlinx.JsExport
 import kotlin.js.JsName
 import kotlinx.datetime.LocalDateTime as LocalDateTimeKx
 

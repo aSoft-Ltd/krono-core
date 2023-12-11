@@ -7,7 +7,7 @@ import kase.Result
 import kase.catching
 import krono.internal.LocalTimeImpl
 import krono.internal.utils.ensure
-import kotlin.js.JsExport
+import kotlinx.JsExport
 import kotlin.js.JsName
 
 @JsName("localTime")

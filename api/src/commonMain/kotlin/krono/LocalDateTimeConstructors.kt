@@ -6,7 +6,7 @@ package krono
 import kase.Result
 import kase.catching
 import krono.internal.LocalDateTimeImpl
-import kotlin.js.JsExport
+import kotlinx.JsExport
 import kotlin.js.JsName
 import kotlin.jvm.JvmOverloads
 

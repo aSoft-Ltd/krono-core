@@ -5,7 +5,7 @@ package krono
 
 import krono.utils.convert
 import krono.utils.equals
-import kotlin.js.JsExport
+import kotlinx.JsExport
 import kotlin.math.roundToInt
 
 data class Duration(val value: Double, val unit: DurationUnit) : Comparable<Duration> {

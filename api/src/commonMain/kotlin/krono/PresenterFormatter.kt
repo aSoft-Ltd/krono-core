@@ -3,7 +3,7 @@
 
 package krono
 
-import kotlin.js.JsExport
+import kotlinx.JsExport
 
 class PresenterFormatter(
     val pattern: PresenterPattern,

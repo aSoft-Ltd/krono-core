@@ -7,6 +7,7 @@ import krono.years
 import kotlin.test.Test
 
 class LocalDateMinusDurationTest {
+
     @Test
     fun should_be_able_to_subtract_days_in_december() {
         val dec25 = LocalDate(2020, 12, 25).getOrThrow()

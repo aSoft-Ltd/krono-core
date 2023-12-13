@@ -7,7 +7,7 @@ import kotlinx.JsExport
 /**
  * A class to format date
  * ```
- * token:    description:             example:
+ * token:     description:             example:
  * {YYYY}     4-digit year             1999
  * {YY}       2-digit year             99
  * {MMMM}     full month name          February

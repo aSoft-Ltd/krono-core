@@ -1,3 +1,6 @@
+import org.jetbrains.kotlin.gradle.targets.js.nodejs.NodeJsRootExtension
+import org.jetbrains.kotlin.gradle.targets.js.npm.tasks.KotlinNpmInstallTask
+
 plugins {
     kotlin("multiplatform")
     kotlin("plugin.serialization")
@@ -9,25 +12,36 @@ description = "An multiplatform interoperable datetime library"
 kotlin {
     jvm { library() }
     if (Targeting.JS) js(IR) { library() }
-//    if (Targeting.WASM) wasm { library() }
-    val osxTargets = if (Targeting.OSX) osxTargets() else listOf()
-//    val ndkTargets = if (Targeting.NDK) ndkTargets() else listOf()
-    val linuxTargets = if (Targeting.LINUX) linuxTargets() else listOf()
-//    val mingwTargets = if (Targeting.MINGW) mingwTargets() else listOf()
+    if (Targeting.WASM) wasmJs { library() }
+    if (Targeting.WASM) wasmWasi { library() }
+    if (Targeting.OSX) osxTargets()
+    if (Targeting.NDK) ndkTargets()
+    if (Targeting.LINUX) linuxTargets()
+    if (Targeting.MINGW) mingwTargets()
 
     sourceSets {
-        val commonMain by getting {
-            dependencies {
-                api(kotlinx.serialization.core)
-                api(libs.kase.core)
-            }
+        commonMain.dependencies {
+            api(kotlinx.serialization.core)
+            api(libs.kase.core)
         }
 
-        val commonTest by getting {
-            dependencies {
-                implementation(libs.kommander.coroutines)
-                implementation(kotlinx.serialization.json)
-            }
+        commonTest.dependencies {
+            implementation(libs.kommander.core)
+            implementation(kotlinx.serialization.json)
         }
     }
+}
+
+rootProject.the<NodeJsRootExtension>().apply {
+    nodeVersion = npm.versions.node.version.get()
+    nodeDownloadBaseUrl = npm.versions.node.url.get()
+}
+
+rootProject.tasks.withType<KotlinNpmInstallTask>().configureEach {
+    args.add("--ignore-engines")
+}
+
+tasks.named("wasmJsTestTestDevelopmentExecutableCompileSync").configure {
+    mustRunAfter(tasks.named("jsBrowserTest"))
+    mustRunAfter(tasks.named("jsNodeTest"))
 }

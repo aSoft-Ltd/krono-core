@@ -10,6 +10,7 @@ import krono.days
 import krono.numberOfDays
 import krono.utils.DayOfYear
 import krono.utils.DaysOfMonth
+import kotlin.math.floor
 
 @PublishedApi
 internal data class LocalDateImpl(
@@ -57,7 +58,7 @@ internal data class LocalDateImpl(
 
     private fun plusMonths(months: Double): LocalDate {
         if (months == 0.0) return this
-        if (!months.toString().endsWith(".0")) {
+        if (0.0 < months - floor(months)) { // if is fractional months, better use days
             return plusDays(30 * months)
         }
         if ((months + monthNumber) <= 12) {
@@ -73,7 +74,7 @@ internal data class LocalDateImpl(
 
     private fun plusYears(years: Double): LocalDate {
         if (years == 0.0) return this
-        if (!years.toString().endsWith(".0")) {
+        if (0.0 < years - floor(years)) { // if is fractional year. Better use months
             return plusMonths(years * 12)
         }
         return LocalDateImpl(year + years.toInt(), monthNumber, dayOfMonth)
@@ -89,7 +90,7 @@ internal data class LocalDateImpl(
 
     private fun minusMonths(months: Double): LocalDate {
         if (months == 0.0) return this
-        if (!months.toString().endsWith(".0")) {
+        if (0.0 < months - floor(months)) {
             return minusDays(30 * months)
         }
         if (months <= monthNumber) {
@@ -120,7 +121,7 @@ internal data class LocalDateImpl(
 
     private fun minusYears(years: Double): LocalDate {
         if (years == 0.0) return this
-        if (!years.toString().endsWith(".0")) {
+        if (0.0 < years - floor(years)) {
             return minusMonths(years * 12)
         }
         return LocalDateImpl(year - years.toInt(), monthNumber, dayOfMonth)

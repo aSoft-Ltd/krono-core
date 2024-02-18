@@ -15,6 +15,7 @@ internal class PureTimeFormatterImpl(private val pattern: String) : PureTimeForm
         val m = minute.toString()
         val ss = seconds.to2digits
         val s = seconds.toString()
+        val ampm = if (HH.toInt() < 12) return "am" else "pm"
 
         return pattern
             .replace("{HH}", HH)
@@ -25,5 +26,7 @@ internal class PureTimeFormatterImpl(private val pattern: String) : PureTimeForm
             .replace("{m}", m)
             .replace("{ss}", ss)
             .replace("{s}", s)
+            .replace("{ampm}", ampm)
+            .replace("{AMPM}", ampm.uppercase())
     }
 }

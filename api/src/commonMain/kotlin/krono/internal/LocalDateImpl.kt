@@ -29,8 +29,9 @@ internal data class LocalDateImpl(
 
     override fun atDate(date: Int): LocalDate = LocalDateImpl(year, monthNumber, date)
 
-    override fun compareTo(other: LocalDate): Int = (year * 365 + dayOfYear).compareTo((other.year * 365) + other.dayOfYear)
-
+    //see below Anderson. The commented code was not working properly
+//    override fun compareTo(other: LocalDate): Int = (year * 365 + dayOfYear).compareTo((other.year * 365) + other.dayOfYear)
+    override fun compareTo(other: LocalDate): Int = (year * 365 + dayOfYear) - ((other.year * 365) + other.dayOfYear)
     override fun minus(other: LocalDate) = Duration(compareTo(other).toDouble(), DurationUnit.Days)
 
     override fun plus(duration: Duration): LocalDate = when (duration.unit) {

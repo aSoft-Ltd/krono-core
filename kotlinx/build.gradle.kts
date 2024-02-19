@@ -12,7 +12,7 @@ description = "An implementation of the krono.api based on kotlinx"
 kotlin {
     jvm { library() }
     if (Targeting.JS) js(IR) { library() }
-//    if (Targeting.WASM) wasmJs { library() }
+    if (Targeting.WASM) wasmJs { library() }
     if (Targeting.OSX) osxTargets()
 //    if (Targeting.NDK) ndkTargets()
     if (Targeting.LINUX) linuxTargets()
@@ -31,16 +31,16 @@ kotlin {
     }
 }
 
-//rootProject.the<NodeJsRootExtension>().apply {
-//    nodeVersion = npm.versions.node.version.get()
-//    nodeDownloadBaseUrl = npm.versions.node.url.get()
-//}
-//
-//rootProject.tasks.withType<KotlinNpmInstallTask>().configureEach {
-//    args.add("--ignore-engines")
-//}
-//
-//tasks.named("wasmJsTestTestDevelopmentExecutableCompileSync").configure {
-//    mustRunAfter(tasks.named("jsBrowserTest"))
-//    mustRunAfter(tasks.named("jsNodeTest"))
-//}
+rootProject.the<NodeJsRootExtension>().apply {
+    nodeVersion = npm.versions.node.version.get()
+    nodeDownloadBaseUrl = npm.versions.node.url.get()
+}
+
+rootProject.tasks.withType<KotlinNpmInstallTask>().configureEach {
+    args.add("--ignore-engines")
+}
+
+tasks.named("wasmJsTestTestDevelopmentExecutableCompileSync").configure {
+    mustRunAfter(tasks.named("jsBrowserTest"))
+    mustRunAfter(tasks.named("jsNodeTest"))
+}

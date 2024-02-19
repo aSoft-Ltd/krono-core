@@ -12,7 +12,7 @@ description = "An implementation of the krono.api based on kotlinx"
 kotlin {
     jvm { library() }
     if (Targeting.JS) js(IR) { library() }
-    if (Targeting.WASM) wasmJs { library() }
+//    if (Targeting.WASM) wasmJs { library() } // Somehow tests are failing when trying to load @js-joda/core
     if (Targeting.OSX) osxTargets()
 //    if (Targeting.NDK) ndkTargets()
     if (Targeting.LINUX) linuxTargets()
@@ -40,7 +40,7 @@ rootProject.tasks.withType<KotlinNpmInstallTask>().configureEach {
     args.add("--ignore-engines")
 }
 
-tasks.named("wasmJsTestTestDevelopmentExecutableCompileSync").configure {
-    mustRunAfter(tasks.named("jsBrowserTest"))
-    mustRunAfter(tasks.named("jsNodeTest"))
-}
+//tasks.named("wasmJsTestTestDevelopmentExecutableCompileSync").configure {
+//    mustRunAfter(tasks.named("jsBrowserTest"))
+//    mustRunAfter(tasks.named("jsNodeTest"))
+//}

@@ -6,10 +6,15 @@ package krono
 import kotlinx.serialization.Serializable
 import krono.serializers.LocalDateIsoSerializer
 import kotlinx.JsExport
+import kotlinx.JsExportIgnore
 import kotlin.js.JsName
 
 @Serializable(with = LocalDateIsoSerializer::class)
 interface LocalDate : DateLike, Dateable<LocalDate>, TemporalComparable<LocalDate> {
+
+    @JsExportIgnore
+    companion object
+
     fun toEpochMillisAsLong(): Long
     fun toEpochMillisAsDouble(): Double
     fun toEpochMillisAsInt(): Int

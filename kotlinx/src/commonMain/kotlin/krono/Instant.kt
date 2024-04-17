@@ -6,10 +6,14 @@ package krono
 import kotlinx.serialization.Serializable
 import krono.serializers.InstantSerializer
 import kotlinx.JsExport
+import kotlinx.JsExportIgnore
 import kotlin.js.JsName
 
 @Serializable(with = InstantSerializer::class)
 interface Instant : TemporalComparable<Instant> {
+
+    @JsExportIgnore
+    companion object
 
     val epochMicroSecondsAsLong: Long
 

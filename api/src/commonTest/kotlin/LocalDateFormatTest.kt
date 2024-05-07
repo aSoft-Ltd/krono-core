@@ -32,6 +32,14 @@ class LocalDateFormatTest {
     }
 
     @Test
+    fun should_format_a_local_date_time() {
+        val date = LocalDateTime("2022-04-01T14:00").getOrThrow()
+        expect(date.format("{hh}:{mm}{ampm}")).toBe("02:00pm")
+        expect(date.format("{hh}:{mm}{AMPM}")).toBe("02:00PM")
+        expect(date.format("{D}{th} {MMM} {YYYY}, {hh}:{mm}")).toBe("1st Apr 2022, 02:00")
+    }
+
+    @Test
     fun should_format_to_the_iso_time() {
         val time = LocalTime(3, 30).getOrThrow()
         expect(time.format(Patterns.ISO_TIME)).toBe("03:30:00")
